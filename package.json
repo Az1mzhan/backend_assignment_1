@@ -1,0 +1,11 @@
+{
+  "name": "backend_assignment_1",
+  "version": "1.0.0",
+  "description": "The group assigment for backend development. You need to create a login form, using node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AzimZen",
+  "license": "ISC"
+}
