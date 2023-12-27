@@ -3,23 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-    <div class="login-container">
-      <form>
-          <h2>Login</h2>
-          <div class="input-field">
-              <label for="username">Username</label>
-              <input type="text" id="username" name="username" required>
-          </div>
-          <div class="input-field">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" required>
-          </div>
-          <button type="submit">Login</button>
-      </form>
+
+<div id="login-form">
+  <h2>Login</h2>
+  <form onsubmit="loginHandler(event)">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <p id="login-message"></p>
+  <div class="acc">
+    <a href="reg.html">If you don't have account</a>
   </div>
+</div>
+
+<script>
+  function loginHandler(event) {
+    event.preventDefault();
+
+    // Replace the following with your authentication logic
+    const enteredUsername = document.getElementById('username').value;
+    const enteredPassword = document.getElementById('password').value;
+
+    // Example: Check if the username is 'user' and password is 'password'
+    if (enteredUsername === 'user' && enteredPassword === 'password') {
+      document.getElementById('login-message').textContent = 'You are logged in!';
+    } else {
+      document.getElementById('login-message').textContent = 'Incorrect username or password. Please try again.';
+    }
+  }
+</script>
+
 </body>
 </html>
