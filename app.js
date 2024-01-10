@@ -1,25 +1,27 @@
 import express from "express";
 import path from "path";
 import authRouter from "./auth/authRouter.js";
-import mongoose from "mongoose";
 import { fileURLToPath } from "url";
+import mongoose from "mongoose";
 
 const __filename = fileURLToPath(import.meta.url);
-export const rootDir = path.dirname(__filename);
+export const __dirname = path.dirname(__filename);
 
 const port = process.env.port || 8000;
 
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(rootDir, "public")));
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/auth", express.static(path.join(__dirname, "public")));
+
 app.use("/auth", authRouter);
 
 const start = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://alik:qwerty123@asik1.bz4xxis.mongodb.net/"
+      "mongodb+srv://alik:qwerty123@asik1.bz4xxis.mongodb.net/?retryWrites=true&w=majority"
     );
 
     app.listen(port, () => {
@@ -32,4 +34,4 @@ const start = async () => {
   }
 };
 
-start();
+await start();
