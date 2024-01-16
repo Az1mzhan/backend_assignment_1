@@ -13,6 +13,7 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  overflow-x: hidden;
 }
 
 label {
@@ -68,8 +69,17 @@ button:hover {
   align-items: center;
 }
 
+#login-form > .form-entry {
+  margin-bottom: 3.75vh;
+}
+
 #username-entry {
   margin-top: 5vh;
+}
+
+#welcome-paragraph {
+  text-align: center;
+  animation: paragraphFade 1s ease-in;
 }
 
 @keyframes inputFocus {
@@ -80,5 +90,14 @@ button:hover {
   to {
     width: 87.5%;
     border-bottom: 0.25vh solid var(--gray-80);
+  }
+}
+
+@keyframes paragraphFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

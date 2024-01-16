@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import mainRouter from "./main-router/mainRouter.js";
 import authRouter from "./auth/authRouter.js";
 import { fileURLToPath } from "url";
 import mongoose from "mongoose";
@@ -14,8 +15,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/auth", express.static(path.join(__dirname, "public")));
 
+app.use("/", mainRouter);
 app.use("/auth", authRouter);
 
 const start = async () => {
